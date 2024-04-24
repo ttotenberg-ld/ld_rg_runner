@@ -6,7 +6,7 @@ import json
 import os
 import random
 import time
-from utils.create_context import create_user_context
+from utils.create_context import create_multi_context
 
 '''
 Get environment variables
@@ -14,7 +14,7 @@ Get environment variables
 load_dotenv()
 
 SDK_KEY = os.environ.get('SDK_KEY')
-FLAG_NAME = os.environ.get('FLAG_NAME')
+FLAG_KEY = os.environ.get('FLAG_KEY')
 NUMERIC_METRIC_1 = os.environ.get('NUMERIC_METRIC_1')
 BINARY_METRIC_1 = os.environ.get('BINARY_METRIC_1')
 NUMERIC_METRIC_1_FALSE_RANGE = json.loads(os.environ.get('NUMERIC_METRIC_1_FALSE_RANGE'))
@@ -45,8 +45,8 @@ Evaluate the flag for randomly generated users, and make the track() calls to La
 '''
 def callLD():
 
-    context = create_user_context()
-    flag_variation = ldclient.get().variation(FLAG_NAME, context, False)
+    context = create_multi_context()
+    flag_variation = ldclient.get().variation(FLAG_KEY, context, False)
 
     if flag_variation:
         print("Executing " + str(flag_variation))

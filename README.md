@@ -12,6 +12,8 @@ It's a way to send metric events to a LaunchDarkly flag, to be measured in Relea
 # What are the parameters in .env?
 
 - `SDK_KEY` should point to your LD server-side SDK Key. This should be considered secret.
+- `API_KEY` should have read permissions to flags
+- `PROJECT_KEY` should point to the project where this flag exists
 - `FLAG_KEY` is the flag you'll be evaluating and sending events to
 - `NUMERIC_METRIC_1` out of the box is tracking `latency`. Change it if you want to track a different number
 - `BINARY_METRIC_1` out of the box is tracking `error-rate`. Change this one if you want a different conversion metric
